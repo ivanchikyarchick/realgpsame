@@ -68,6 +68,11 @@ io.on('connection', socket => {
     checkStartCondition();
   });
 
+  socket.on('mapSelected', (size) => {
+  io.emit('mapChosen', size); // 🗺️ надсилаємо вибір мапи всім
+});
+
+
   function checkStartCondition() {
     if (mapChosen && !gameStarted && allFarEnough()) {
       gameStarted = true;
